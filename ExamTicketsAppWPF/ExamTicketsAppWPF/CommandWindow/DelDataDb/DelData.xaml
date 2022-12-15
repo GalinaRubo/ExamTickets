@@ -1,0 +1,43 @@
+﻿<Window x:Class="ExamTicketsAppWPF.CommandWindow.DelDataDb.DelData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamTicketsAppWPF.CommandWindow.DelDataDb"
+        mc:Ignorable="d"
+        Title="DelData" Height="360" Width="400" Background="Brown">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Control.FontSize" Value="20"></Setter>
+            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+            <Setter Property="Control.Height" Value="40"></Setter>
+            <Setter Property="Control.Width" Value="350"></Setter>
+            <Setter Property="Control.Background" Value="OrangeRed"></Setter>
+            <Setter Property="Control.Foreground" Value="White"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="DelS" Content="Удалить предмет" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="DelS_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="DelC" Content="Удалить категорию" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="DelC_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="DelSC" Content="Удалить предмет+категория" Style="{StaticResource ButtonStyle}" Click="DelSC_Click" FontStyle="Italic" />
+        </StackPanel>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="DelQ" Content="Удалить вопрос" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="DelQ_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="DelT" Content="Удалить задачу" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="DelT_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

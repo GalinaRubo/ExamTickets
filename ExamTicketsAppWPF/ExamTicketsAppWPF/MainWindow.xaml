@@ -1,0 +1,190 @@
+﻿<Window x:Class="ExamTicketsAppWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ExamTicketsAppWPF.ViewModels"
+        xmlns:local="clr-namespace:ExamTicketsAppWPF"
+        mc:Ignorable="d"
+       Title="MainWindow" Height="800" Width="800"  Background="Coral" >
+    <Window.DataContext>
+        <vm:CommandViewModel></vm:CommandViewModel>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="labelTytleStyle">
+            <Setter Property="Control.FontFamily" Value="Britannic Bold"></Setter>
+            <Setter Property="Control.Foreground" Value="Gray"></Setter>
+            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+            <Setter Property="ItemsControl.FontSize" Value="30"></Setter>
+        </Style>
+        <Style x:Key="labelStyle" TargetType="Label">
+            <Setter Property="Control.FontFamily" Value="Courier"></Setter>
+            <Setter Property="Control.Foreground" Value="Beige"></Setter>
+            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+            <Setter Property="ItemsControl.FontSize" Value="25"></Setter>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Control.FontSize" Value="20"></Setter>
+            <Setter Property="Control.Margin" Value="0,50"></Setter>
+            <Setter Property="Control.Foreground" Value="Gray"></Setter>
+            <Setter Property="Control.Background" Value="Beige"></Setter>
+            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+            <Setter Property="Control.Width" Value="200"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Border Width="400"
+                 Background="Gray" Margin="0,20">
+                <TextBlock Text="Экзаменационные билеты"  HorizontalAlignment="Center" Foreground="Beige"
+                 FontSize="25" FontFamily="Vineta BT" FontWeight="Bold" FontStyle="Italic"/>
+            </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.2*" />
+                    <ColumnDefinition Width="0.03*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+                            <Label x:Name="Создание" Content="Формирование билетов" Style="{StaticResource labelTytleStyle}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                            <Label  Style="{StaticResource labelStyle}" VerticalContentAlignment="Center">
+                                <Label.Content>
+                                    <TextBlock Text="Предмет экзамена" Margin="0,20" TextWrapping="Wrap"></TextBlock>
+                                </Label.Content>
+                            </Label>
+                        </StackPanel >
+                        <StackPanel   Grid.Row="2" HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="60,10">
+                            <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="300">
+                                <ComboBox x:Name="Subject"   FontSize="25"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите предмет"  SelectionChanged="Subject_SelectionChanged" FontWeight="Normal" VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+                                </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" HorizontalAlignment="Center">
+                            <Label  Style="{StaticResource labelStyle}" VerticalContentAlignment="Center">
+                                <Label.Content>
+                                    <TextBlock Text="Категория экзамена" Margin="0,20" TextWrapping="Wrap"></TextBlock>
+                                </Label.Content>
+                            </Label>
+                        </StackPanel >
+                        <StackPanel Grid.Row="4" HorizontalAlignment="Center" Grid.ColumnSpan="3" Margin="60,10">
+                            <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="300">
+                                <ComboBox x:Name="Category"   FontSize="25"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите категорию"  SelectionChanged="Category_SelectionChanged" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Label  Style="{StaticResource labelStyle}" VerticalContentAlignment="Center">
+                                        <Label.Content>
+                                            <TextBlock Text="Количество билетов" Margin="20,5" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                                        </Label.Content>
+                                    </Label>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="60,10" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Border BorderBrush="Gray"  BorderThickness="2"  Height="40" Width="80">
+                                        <TextBox x:Name="kb" TextAlignment="Center"  FontSize="30" FontWeight="Bold"  Height="36" KeyDown =" kb_OnKeyDownHandler " VerticalAlignment="Top" />
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Row="6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" HorizontalAlignment="Right">
+                                    <Label  Style="{StaticResource labelStyle}" VerticalContentAlignment="Center">
+                                        <Label.Content>
+                                            <TextBlock Text="Количество вопросов в билете" Margin="20,5" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                                        </Label.Content>
+                                    </Label>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="60,10" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Border BorderBrush="Gray"  BorderThickness="2"  Height="40" Width="80">
+                                        <TextBox x:Name="kq" TextAlignment="Center"  FontSize="30" FontWeight="Bold"  Height="36" KeyDown =" kq_OnKeyDownHandler " VerticalAlignment="Top" />
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Row="7">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" HorizontalAlignment="Right">
+                                    <Label  Style="{StaticResource labelStyle}" VerticalContentAlignment="Center">
+                                        <Label.Content>
+                                            <TextBlock Text="Количество задач в билете" Margin="20,5" TextWrapping="Wrap" TextAlignment="Center" ></TextBlock>
+                                        </Label.Content>
+                                    </Label>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="60,10" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Border BorderBrush="Gray"  BorderThickness="2"  Height="40" Width="80">
+                                        <TextBox x:Name="kt" TextAlignment="Center"  FontSize="30" FontWeight="Bold"  Height="36" KeyDown =" kt_OnKeyDownHandler " VerticalAlignment="Top" />
+                                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Row="8"  HorizontalAlignment="Center">
+                            <Button x:Name="create" Content="Сформировать" Margin="0,10"  Style="{StaticResource ButtonStyle}" Command="{Binding Madecommand}"  Click="ButtonMade_Click" Height="36" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Background="Beige"/>
+                <StackPanel Grid.Column="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0"  HorizontalAlignment="Center">
+                            <Label x:Name="Работа"   Style="{StaticResource labelTytleStyle}">
+                                <Label.Content>
+                                    <TextBlock Text="Работа с базой данных билетов" Margin="0,5" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic"></TextBlock>
+                                </Label.Content>
+                            </Label>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1">
+                            <Button Content="Удалить"  Style="{StaticResource ButtonStyle}" Command="{Binding Delcommand}"  Click="ButtonDel_Click" Height="36" VerticalAlignment="Bottom" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="2">
+                            <Button Content="Добавить"  Style="{StaticResource ButtonStyle}" Command="{Binding Addcommand}"  Click="ButtonAdd_Click" Height="36" VerticalAlignment="Bottom" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="3">
+                            <Button Content="Редактировать"   Style="{StaticResource ButtonStyle}" Command="{Binding Editcommand}"  Click="ButtonEdit_Click" Height="36" VerticalAlignment="Bottom" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
+

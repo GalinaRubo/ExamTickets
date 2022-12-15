@@ -1,0 +1,66 @@
+﻿<Window x:Class="ExamTicketsAppWPF.CommandWindow.ItemQuestionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:ExamTicketsAppWPF.ViewModels"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamTicketsAppWPF.CommandWindow"
+        mc:Ignorable="d"
+        Title="ItemQuestionWindow" Height="550" Width="600" Background="DimGray">
+    <Window.DataContext>
+        <vm:CommandViewModel></vm:CommandViewModel>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="labelStyle">
+            <Setter Property="Control.FontFamily" Value="Courier"></Setter>
+            <Setter Property="Control.Foreground" Value="Red"></Setter>
+            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+            <Setter Property="ItemsControl.FontSize" Value="25"></Setter>
+            <Setter Property="ItemsControl.HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="0.75*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label Content="Предмет" Style="{StaticResource labelStyle}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <ComboBox x:Name="Subject"  FontSize="25" Width="300"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите предмет"  SelectionChanged="Subject_SelectionChanged" FontWeight="Normal" VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label Content="Формат" Style="{StaticResource labelStyle}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" VerticalAlignment="Center">
+            <ComboBox x:Name="Format"  FontSize="20" Width="200" IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите формат"  SelectionChanged="category_SelectionChanged" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <Label Content="Категория" Style="{StaticResource labelStyle}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" VerticalAlignment="Center">
+            <ComboBox x:Name="category"  FontSize="25" Width="300" IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите категорию"  SelectionChanged="category_SelectionChanged" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6">
+            <Label  Style="{StaticResource labelStyle}">
+            <Label.Content>
+                <TextBlock Text="Текст предмета/категории/вопроса/задачи или путь к файлу с вопросами/задачами"  TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+            </Label.Content>
+            </Label>
+        </StackPanel>
+        <StackPanel  Grid.Row="7" VerticalAlignment="Center">
+            <TextBox x:Name="Question" TextAlignment="Center" FontSize="20"  Width="500" Height="120" TextChanged="Question_TextChanged" FontWeight="Bold"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="8">
+            <Button  Content="Добавить" FontSize="25" Width="150" Foreground="Red" FontWeight="Bold" Command="{Binding AddQTScommand}" Click="ButtonAddQTS_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

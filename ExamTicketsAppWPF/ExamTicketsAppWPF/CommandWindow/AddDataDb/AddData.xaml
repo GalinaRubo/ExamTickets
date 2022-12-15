@@ -1,0 +1,47 @@
+﻿<Window x:Class="ExamTicketsAppWPF.CommandWindow.AddInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExamTicketsAppWPF.CommandWindow"
+        mc:Ignorable="d"
+        Title="AddInfoWindow" Height="420" Width="400" Background="Gray">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Control.FontSize" Value="20"></Setter>
+            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+            <Setter Property="Control.Height" Value="40"></Setter>
+            <Setter Property="Control.Width" Value="300"></Setter>
+            <Setter Property="Control.Background" Value="Red"></Setter>
+            <Setter Property="Control.Foreground" Value="White"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="AddQ" Content="Добавить вопрос" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="ButtonAddQ_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="AddQs" Content="Добавить список вопросов" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="AddQs_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="AddT" Content="Добавить задачу" Style="{StaticResource ButtonStyle}" Click="AddT_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="AddTs" Content="Добавить список задач" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="AddTs_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="AddS" Content="Добавить предмет" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="AddS_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="AddC" Content="Добавить категорию" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="AddC_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
