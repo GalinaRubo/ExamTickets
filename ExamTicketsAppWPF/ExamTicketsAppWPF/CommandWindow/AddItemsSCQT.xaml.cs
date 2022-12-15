@@ -17,12 +17,12 @@ namespace ExamTicketsAppWPF.CommandWindow
 			InitializeComponent();
 			
 			DataContext = commandView;
+			commandView.flagQTS = flag;
 			if (flag < 5)
 			{
 				Format.ItemsSource = mWViwModel._format;
 				Subject.ItemsSource = mWViwModel._subject;
-				category.ItemsSource = mWViwModel._category;
-				commandView.flagQTS = flag;
+				category.ItemsSource = mWViwModel._category;				
 			}
 		}
 

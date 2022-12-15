@@ -41,7 +41,7 @@
             <Label Content="Формат" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="3" VerticalAlignment="Center">
-            <ComboBox x:Name="Format"  FontSize="20" Width="200" IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите формат"  SelectionChanged="category_SelectionChanged" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="Format"  FontSize="20" Width="200" IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите формат"  SelectionChanged="Format_SelectionChanged" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
         </StackPanel>
         <StackPanel Grid.Row="4">
             <Label Content="Категория" Style="{StaticResource labelStyle}"/>
