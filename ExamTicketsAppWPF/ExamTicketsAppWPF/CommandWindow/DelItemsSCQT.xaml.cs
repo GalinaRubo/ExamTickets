@@ -88,7 +88,7 @@ namespace ExamTicketsAppWPF.CommandWindow
 				{
 				ques = ques.Where(x => x.FormatQuestion == (string)Format.SelectedItem).ToList();
 				QT.ItemsSource = ques.Select(x => x.ContentQuestion).ToList();
-			} 
+				} 
 				if (Flag == 5)
 				{
 				prac = prac.Where(x => x.FormatPractice == (string)Format.SelectedItem).ToList();
@@ -105,12 +105,12 @@ namespace ExamTicketsAppWPF.CommandWindow
 				{
 				ques = ques.Where(x => x.IdCategory == indexc).ToList();
 				QT.ItemsSource = ques.Select(x => x.ContentQuestion).ToList();
-			}
+				}
 				if (Flag == 5)
 				{
 				prac = prac.Where(x => x.idcategory == indexc).ToList();
 				QT.ItemsSource = prac.Select(x => x.ContentPractice).ToList();
-			}
+				}
 		}
 
 		private void ButtonDelQTSC_Click(object sender, RoutedEventArgs e)

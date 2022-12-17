@@ -295,6 +295,7 @@ namespace ExamTicketsAppWPF.ViewModels
 								if (p.idsubject == indexs) db.practices.Remove(p);
 							db.subjects.Remove(db.subjects.First(s => s.Id == indexs));
 							db.SaveChanges();
+							MessageBox.Show("Предмет удален");
 							break;
 						//удаление категории и всех вопросов и задач этой категории
 						case 2:
@@ -305,6 +306,7 @@ namespace ExamTicketsAppWPF.ViewModels
 								if (p.idsubject == indexc) db.practices.Remove(p);
 							db.categories.Remove(db.categories.First(c => c.Id == indexc));
 							db.SaveChanges();
+							MessageBox.Show("Категория удалена");
 							break;
 						//удаление вопросов и задач выбранных предмета + категория
 						case 3:
@@ -315,13 +317,17 @@ namespace ExamTicketsAppWPF.ViewModels
 							foreach (var p in db.practices)
 								if (p.idsubject == index_s && p.idcategory == index_c) db.practices.Remove(p);
 							db.SaveChanges();
-							MessageBox.Show("Вопросы и задачи удалены");
+							MessageBox.Show("Вопросы и задачи выбранных предмета + категори удалены");
 							break;
 						case 4:
-							MessageBox.Show("To be continue...");
+							db.questions.Remove(db.questions.First(c => c.ContentQuestion == textQTS));
+							db.SaveChanges();
+							MessageBox.Show("Вопрос удален");
 							break;
 						case 5:
-							MessageBox.Show("To be continue...");
+							db.practices.Remove(db.practices.First(c => c.ContentPractice == textQTS));
+							db.SaveChanges();
+							MessageBox.Show("Задача удалена");
 							break;
 					}
 				});

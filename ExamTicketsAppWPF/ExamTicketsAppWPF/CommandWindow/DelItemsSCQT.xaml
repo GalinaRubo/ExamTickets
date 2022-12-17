@@ -35,29 +35,37 @@
             <Label Content="Предмет" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <ComboBox x:Name="Subject"  Text="-Выберите предмет-"  FontSize="25"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  SelectionChanged="Subject_SelectionChanged" FontWeight="Normal" Width="350" Height="50" VerticalAlignment="Center" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" IsReadOnly="True"/>
+            <ComboBox x:Name="Subject"  Text="-Выберите предмет-" HorizontalContentAlignment="Center"  FontSize="25"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  SelectionChanged="Subject_SelectionChanged" FontWeight="Normal" Width="350" Height="50" VerticalAlignment="Center" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" IsReadOnly="True"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Формат" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="3" VerticalAlignment="Center">
-            <ComboBox x:Name="Format" Text="-Выберите формат-"  FontSize="20"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"   SelectionChanged="Format_SelectionChanged" FontWeight="Normal" Width="240" Height="36" VerticalAlignment="Center" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="Format" Text="-Выберите формат-" HorizontalContentAlignment="Center"  FontSize="20"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"   SelectionChanged="Format_SelectionChanged" FontWeight="Normal" Width="240" Height="36" VerticalAlignment="Center" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
         </StackPanel>
         <StackPanel Grid.Row="4">
             <Label Content="Категория" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="5" VerticalAlignment="Center">
-            <ComboBox x:Name="Category" Text="-Выберите категорию-"  FontSize="25"   IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  SelectionChanged="Category_SelectionChanged" FontWeight="Normal" Width="350" Height="50" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="Category" Text="-Выберите категорию-" HorizontalContentAlignment="Center"  FontSize="25"   IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  SelectionChanged="Category_SelectionChanged" FontWeight="Normal" Width="350" Height="50" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
         </StackPanel>
         <StackPanel Grid.Row="6" >
             <Label  Style="{StaticResource labelStyle}">
                 <Label.Content>
-                    <TextBlock Text="Вопрос/Задача"  TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                    <TextBlock Text="Вопрос/Задача"   TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
                 </Label.Content>
             </Label>
         </StackPanel>
-        <StackPanel Grid.Row="7" VerticalAlignment="Center">
-            <ComboBox x:Name="QT"    FontSize="33"   IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите вопрос или задачу"  SelectionChanged="QT_SelectionChanged" FontWeight="Normal" Width="500" Height="60" VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+        <StackPanel Grid.Row="7"  VerticalAlignment="Center">
+            <ComboBox x:Name="QT"    FontSize="20" Width="500" Height="60"   IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите вопрос или задачу"  TextBlock.TextAlignment="Center"  SelectionChanged="QT_SelectionChanged" FontWeight="Normal"  FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" Width="500" Height="60"  TextWrapping="Wrap"  />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+                </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="8">
             <Button  Content="Удалить" FontSize="25" Width="150" Foreground="OrangeRed" FontWeight="Bold" Command="{Binding DelQTScommand}" Click="ButtonDelQTSC_Click"/>
