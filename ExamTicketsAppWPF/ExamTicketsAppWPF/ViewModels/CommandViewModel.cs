@@ -23,17 +23,17 @@ namespace ExamTicketsAppWPF.ViewModels
 		public Command? delQTSCommand;
 		public Command? saveQTSCommand;
 		public int flagQTS { get; set; }
-		public string formatQTS { get; set; }
-		public string subjectQTS { get; set; }
-		public string categoryQTS { get; set; }
-		public string textQTS { get; set; }
+		public string? formatQTS { get; set; }
+		public string? subjectQTS { get; set; }
+		public string? categoryQTS { get; set; }
+		public string? textQTS { get; set; }
 		public int Id { get; set; }
-		public string Kb { get; set; }
-		public string Kq { get; set; }
-		public string Kt { get; set; }
+		public string? Kb { get; set; }
+		public string? Kq { get; set; }
+		public string? Kt { get; set; }
 
-		public string Sb { get; set; }
-		public string Cb { get; set; }
+		public string? Sb { get; set; }
+		public string? Cb { get; set; }
 
 
 		public Command Addcommand
@@ -217,11 +217,14 @@ namespace ExamTicketsAppWPF.ViewModels
 					switch (flagQTS)
 					{
 						case 1:
-
-							Question question = new Question { ContentQuestion = textQTS, FormatQuestion = formatQTS, IdSubject = indexs, IdCategory = indexc };
-							db.questions.Add(question);
-							db.SaveChanges();
-							MessageBox.Show("Вопрос сохранен");
+							if (db.questions.First(s => s.ContentQuestion == textQTS).Id <= 0)
+							{
+								Question question = new Question { ContentQuestion = textQTS, FormatQuestion = formatQTS, IdSubject = indexs, IdCategory = indexc };							
+								db.questions.Add(question);
+								db.SaveChanges();
+								MessageBox.Show("Вопрос сохранен");
+							}
+							else MessageBox.Show("Вопрос существует");
 							break;
 						case 2:
 
@@ -233,19 +236,28 @@ namespace ExamTicketsAppWPF.ViewModels
 
 								foreach (var s in str)
 								{
-									Question question1 = new Question { ContentQuestion = s, FormatQuestion = formatQTS, IdSubject = indexs, IdCategory = indexc };
-									db.questions.Add(question1);
+									if (db.questions.First(q => q.ContentQuestion == s).Id <= 0)
+									{
+										Question question1 = new Question { ContentQuestion = s, FormatQuestion = formatQTS, IdSubject = indexs, IdCategory = indexc };
+										db.questions.Add(question1);
+									}
+									else MessageBox.Show("Вопрос" + s + "существует");
 								}
 								db.SaveChanges();
-								MessageBox.Show("Вопросы сохранены");
+								MessageBox.Show("Новые вопросы добавлены");
 							}
 							else MessageBox.Show("Путь к файлу/каталогу задан неверно!");
 							break;
 						case 3:
-							Practice practice = new Practice { ContentPractice = textQTS, FormatPractice = formatQTS, idsubject = indexs, idcategory = indexc };
-							db.practices.Add(practice);
-							db.SaveChanges();
-							MessageBox.Show("Задача сохранена");
+							if (db.practices.First(p => p.ContentPractice == textQTS).Id <= 0)
+							{
+								Practice practice = new Practice { ContentPractice = textQTS, FormatPractice = formatQTS, idsubject = indexs, idcategory = indexc };						
+								db.practices.Add(practice);
+								db.SaveChanges();
+								MessageBox.Show("Задача сохранена");
+							}
+							else
+								MessageBox.Show("Задача существует");
 							break;
 						case 4:
 							if (Directory.Exists(textQTS) || File.Exists(textQTS))
@@ -255,25 +267,39 @@ namespace ExamTicketsAppWPF.ViewModels
 								else str = Directory.GetFiles(textQTS);
 								foreach (var s in str)
 								{
-									Practice practice1 = new Practice { ContentPractice = s, FormatPractice = formatQTS, idsubject = indexs, idcategory = indexc };
-									db.practices.Add(practice1);
+									if (db.practices.First(p => p.ContentPractice == s).Id <= 0)
+									{
+										Practice practice1 = new Practice { ContentPractice = s, FormatPractice = formatQTS, idsubject = indexs, idcategory = indexc };
+										db.practices.Add(practice1);
+									}
+									else
+										MessageBox.Show("Задача" + s + "существует");
 								}
 								db.SaveChanges();
-								MessageBox.Show("Задачи сохранены");
+								MessageBox.Show("Новые задачи добавлены");
 							}
 							else MessageBox.Show("Путь к файлу/каталогу задан неверно!");
 							break;
 						case 5:
-							Subject subject = new Subject { SubjectName = textQTS };
-							db.subjects.Add(subject);
-							db.SaveChanges();
-							MessageBox.Show("Предмет сохранен");
+							if (db.subjects.First(s => s.SubjectName == textQTS).Id <= 0)									
+							{
+								Subject subject = new Subject { SubjectName = textQTS };
+								db.subjects.Add(subject);
+								db.SaveChanges();
+								MessageBox.Show("Предмет сохранен");
+							}
+							else
+								MessageBox.Show("Предмет существует");
 							break;
 						case 6:
-							Category category = new Category { CategoryName = textQTS };
-							db.categories.Add(category);
-							db.SaveChanges();
-							MessageBox.Show("Категория сохранена");
+							if (db.categories.First(s => s.CategoryName == textQTS).Id <= 0)
+							{
+								Category category = new Category { CategoryName = textQTS };													
+								db.categories.Add(category);
+								db.SaveChanges();
+								MessageBox.Show("Категория сохранена");
+							}
+							else MessageBox.Show("Категория существует");
 							break;
 						default:
 							MessageBox.Show("Задание не выбрано");
