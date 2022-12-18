@@ -60,7 +60,18 @@
             <TextBox x:Name="Question" TextAlignment="Center" FontSize="20"  Width="500" Height="120" TextChanged="Question_TextChanged" FontWeight="Bold"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="8">
-            <Button  Content="Добавить" FontSize="25" Width="150" Foreground="Red" FontWeight="Bold" Command="{Binding AddQTScommand}" Click="ButtonAddQTS_Click"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Button  Content="Добавить" FontSize="25" Width="150" Foreground="Red" FontWeight="Bold" Command="{Binding AddQTScommand}" Click="ButtonAddQTS_Click"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Button  Content="Вернуться" FontSize="25" Width="150" Foreground="Red" FontWeight="Bold"  Click="ButtonBack_Click"/>
+                </StackPanel>
+            </Grid>
         </StackPanel>
     </Grid>
 </Window>

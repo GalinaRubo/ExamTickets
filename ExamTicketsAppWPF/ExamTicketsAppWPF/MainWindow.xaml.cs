@@ -103,5 +103,10 @@ namespace ExamTicketsAppWPF
 
 			commandView.Sb = (string)Subject.SelectedItem;
 		}
+
+		private void ButtonExit_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
+		}
 	}
 }

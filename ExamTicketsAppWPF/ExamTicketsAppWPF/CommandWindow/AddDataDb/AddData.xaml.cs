@@ -54,5 +54,10 @@ namespace ExamTicketsAppWPF.CommandWindow
 			itemQuestionWindow.ShowDialog();
 			Close();
 		}
+
+		private void Can_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
+		}
 	}
 }

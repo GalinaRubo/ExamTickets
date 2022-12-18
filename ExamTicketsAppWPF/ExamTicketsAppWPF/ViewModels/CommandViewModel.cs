@@ -21,11 +21,13 @@ namespace ExamTicketsAppWPF.ViewModels
 		public Command? madeCommand;
 		public Command? addQTSCommand;
 		public Command? delQTSCommand;
+		public Command? saveQTSCommand;
 		public int flagQTS { get; set; }
 		public string formatQTS { get; set; }
 		public string subjectQTS { get; set; }
 		public string categoryQTS { get; set; }
 		public string textQTS { get; set; }
+		public int Id { get; set; }
 		public string Kb { get; set; }
 		public string Kq { get; set; }
 		public string Kt { get; set; }
@@ -43,7 +45,7 @@ namespace ExamTicketsAppWPF.ViewModels
 						AddInfoWindow addInfoWindow = new AddInfoWindow();
 						addInfoWindow.ShowDialog();
 					});
-			}		
+			}
 		}
 		public Command Delcommand
 		{
@@ -62,7 +64,8 @@ namespace ExamTicketsAppWPF.ViewModels
 			{
 				return editCommand = new Command((o) =>
 				{
-					MessageBox.Show("Команда редактирования");
+					DelItemsSCQT delItemsSCQT = new DelItemsSCQT(0);
+					delItemsSCQT.ShowDialog();
 				});
 			}
 		}
@@ -76,7 +79,7 @@ namespace ExamTicketsAppWPF.ViewModels
 					{
 						db.Database.EnsureCreated();
 						var indexc = (db.categories.First(c => c.CategoryName == Cb)).Id;
-						var indexs = (db.subjects.First(s => s.SubjectName == Sb)).Id;			
+						var indexs = (db.subjects.First(s => s.SubjectName == Sb)).Id;
 						var quest = db.questions.Where(x => x.IdSubject == indexs && x.IdCategory == indexc).ToList();
 						var prac = db.practices.Where(a => a.idsubject == indexs && a.idcategory == indexc).ToList();
 						int kb = 1;
@@ -86,7 +89,7 @@ namespace ExamTicketsAppWPF.ViewModels
 						if (quest.Count == 0) MessageBox.Show("Вопросов с таким предметом и категорией в базе данных нет");
 						else
 						{
-							 kbr = quest.Count - Convert.ToInt32(Kb) * Convert.ToInt32(Kq);
+							kbr = quest.Count - Convert.ToInt32(Kb) * Convert.ToInt32(Kq);
 							if (kbr < 0)
 							{
 								Kb = (quest.Count / Convert.ToInt32(Kq)).ToString();
@@ -182,8 +185,8 @@ namespace ExamTicketsAppWPF.ViewModels
 
 						doc.Save();
 					}
-					if(Kb != "0")
-					MessageBox.Show("Билеты сформированы");
+					if (Kb != "0")
+						MessageBox.Show("Билеты сформированы");
 					return;
 				});
 			}
@@ -194,14 +197,14 @@ namespace ExamTicketsAppWPF.ViewModels
 			{
 				return addQTSCommand = new Command((o) =>
 				{
-				TicketsDbContext db = new TicketsDbContext();
-				MWViewModel mwViewModel = new MWViewModel();
+					TicketsDbContext db = new TicketsDbContext();
+					MWViewModel mwViewModel = new MWViewModel();
 
-				int indexs = 0;
-				int indexc = 0;
+					int indexs = 0;
+					int indexc = 0;
 
-				if (flagQTS < 5)
-				{
+					if (flagQTS < 5)
+					{
 						indexc = (db.categories.First(c => c.CategoryName == categoryQTS)).Id;
 						indexs = (db.subjects.First(s => s.SubjectName == subjectQTS)).Id;
 					}
@@ -246,7 +249,7 @@ namespace ExamTicketsAppWPF.ViewModels
 								else str = Directory.GetFiles(textQTS);
 								foreach (var s in str)
 								{
-									Practice practice1 = new Practice { ContentPractice = s, FormatPractice = formatQTS, idsubject = indexc, idcategory = indexc };
+									Practice practice1 = new Practice { ContentPractice = s, FormatPractice = formatQTS, idsubject = indexs, idcategory = indexc };
 									db.practices.Add(practice1);
 								}
 								db.SaveChanges();
@@ -280,7 +283,7 @@ namespace ExamTicketsAppWPF.ViewModels
 			{
 				return delQTSCommand = new Command((o) =>
 				{
-					MessageBox.Show("flag = " + Convert.ToInt32(flagQTS) +"\nformat =  " + formatQTS + "\nsubject = " + subjectQTS + "\ncategory = " + categoryQTS + "\ntext = " + textQTS);
+					MessageBox.Show("flag = " + Convert.ToInt32(flagQTS) + "\nformat =  " + formatQTS + "\nsubject = " + subjectQTS + "\ncategory = " + categoryQTS + "\ntext = " + textQTS);
 					TicketsDbContext db = new TicketsDbContext();
 					MWViewModel mwViewModel = new MWViewModel();
 
@@ -333,7 +336,46 @@ namespace ExamTicketsAppWPF.ViewModels
 				});
 			}
 		}
-			
+		public Command SaveQTScommand
+		{
+			get
+			{
+				return saveQTSCommand = new Command((o) =>
+				{
+					using (TicketsDbContext db = new TicketsDbContext())
+					{
+						db.Database.EnsureCreated();
+						if (flagQTS == 1)
+						{
+							Subject subject = db.subjects.First(s => s.Id == Id);
+							subject.SubjectName = textQTS;
+							db.Update(subject);
+						}
+						if (flagQTS == 2)
+						{
+							Category category = db.categories.First(p => p.Id == Id);
+							category.CategoryName = textQTS;
+							db.Update(category);
+						}
+						if (flagQTS == 4)
+						{ 
+						Question question = db.questions.First(q => q.Id == Id);
+							question.ContentQuestion = textQTS;
+							db.Update(question);
+						
+						}
+						if (flagQTS == 5)
+						{
+						Practice practice = db.practices.First(p => p.Id == Id);
+							practice.ContentPractice = textQTS;
+							db.Update(practice);	
+						}
+						db.SaveChanges();
+						MessageBox.Show("Изменения сохранены");
+					}
+				});
+			}
+		}
 	}
 
 }

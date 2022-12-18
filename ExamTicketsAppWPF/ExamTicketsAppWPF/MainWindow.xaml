@@ -106,7 +106,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Margin="60,10" HorizontalAlignment="Left" VerticalAlignment="Center">
                                     <Border BorderBrush="Gray"  BorderThickness="2"  Height="40" Width="80">
-                                        <TextBox x:Name="kb" TextAlignment="Center"  FontSize="30" FontWeight="Bold"  Height="36" KeyDown =" kb_OnKeyDownHandler " VerticalAlignment="Top" />
+                                        <TextBox x:Name="kb" TextAlignment="Center"  FontSize="25"   Height="36" KeyDown =" kb_OnKeyDownHandler " VerticalAlignment="Top" />
                                     </Border>
                                 </StackPanel>
                             </Grid>
@@ -126,7 +126,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Margin="60,10" HorizontalAlignment="Left" VerticalAlignment="Center">
                                     <Border BorderBrush="Gray"  BorderThickness="2"  Height="40" Width="80">
-                                        <TextBox x:Name="kq" TextAlignment="Center"  FontSize="30" FontWeight="Bold"  Height="36" KeyDown =" kq_OnKeyDownHandler " VerticalAlignment="Top" />
+                                        <TextBox x:Name="kq" TextAlignment="Center"  FontSize="25"   Height="36" KeyDown =" kq_OnKeyDownHandler " VerticalAlignment="Top" />
                                     </Border>
                                 </StackPanel>
                             </Grid>
@@ -146,7 +146,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Margin="60,10" HorizontalAlignment="Left" VerticalAlignment="Center">
                                     <Border BorderBrush="Gray"  BorderThickness="2"  Height="40" Width="80">
-                                        <TextBox x:Name="kt" TextAlignment="Center"  FontSize="30" FontWeight="Bold"  Height="36" KeyDown =" kt_OnKeyDownHandler " VerticalAlignment="Top" />
+                                        <TextBox x:Name="kt" TextAlignment="Center"  FontSize="25"   Height="36" KeyDown =" kt_OnKeyDownHandler " VerticalAlignment="Top" />
                                     </Border>
                                 </StackPanel>
                             </Grid>
@@ -160,6 +160,7 @@
                 <StackPanel Grid.Column="2">
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -180,6 +181,9 @@
                         </StackPanel>
                         <StackPanel Grid.Row="3">
                             <Button Content="Редактировать"   Style="{StaticResource ButtonStyle}" Command="{Binding Editcommand}"  Click="ButtonEdit_Click" Height="36" VerticalAlignment="Bottom" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="4">
+                            <Button Content="Выйти"   Style="{StaticResource ButtonStyle}"   Click="ButtonExit_Click" Height="36" VerticalAlignment="Bottom" />
                         </StackPanel>
                     </Grid>
                 </StackPanel>

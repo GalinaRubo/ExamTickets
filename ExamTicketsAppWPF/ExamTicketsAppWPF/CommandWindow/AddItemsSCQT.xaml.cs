@@ -51,5 +51,10 @@ namespace ExamTicketsAppWPF.CommandWindow
 		{
 			commandView.categoryQTS = (string)category.SelectedItem;
 		}
+
+		private void ButtonBack_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
+		}
 	}
 }
