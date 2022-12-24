@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace ExamTicketsAppWPF.ViewModels.Commands
 {
-	public class Command : ICommand
+	public partial class Command : ICommand
 	{
 		Action<object?> execute;
 		Func<object?, bool>? canExecute;

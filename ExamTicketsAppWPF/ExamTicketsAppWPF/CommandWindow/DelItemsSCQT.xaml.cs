@@ -1,6 +1,6 @@
 ﻿using ExamTicketsAppWPF.Models;
 using ExamTicketsAppWPF.ViewModels;
-using Microsoft.EntityFrameworkCore;
+using ExamTicketsAppWPF.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,15 +24,15 @@ namespace ExamTicketsAppWPF.CommandWindow
 
 		int Flag;
 		readonly MWViewModel mWViwModel = new MWViewModel();
-		CommandViewModel commandView = new CommandViewModel();
+		CommandDelItems commandDelItems = new CommandDelItems();
 		TicketsDbContext _db = new TicketsDbContext();
 
 		public DelItemsSCQT(int flag)
 		{
 			InitializeComponent();
-			DataContext = commandView;
+			DataContext = commandDelItems;
 			Flag = flag;
-			commandView.flagQTS = flag;
+			CommandDelItems.flagQTS = flag;
 			_db.Database.EnsureCreated();
 			subj = _db.subjects.ToList();
 			categ = _db.categories.ToList();
@@ -78,13 +78,13 @@ namespace ExamTicketsAppWPF.CommandWindow
 		{
 			   	
 				indexs = subj.First(s => s.SubjectName == (string?)Subject.SelectedItem).Id;
-				commandView.subjectQTS = (string)Subject.SelectedItem;
+				CommandDelItems.subjectQTS = (string)Subject.SelectedItem;
 				if (Flag == 0)
 				{
-				commandView.Id = indexs;
-				commandView.flagQTS = 1;
+				CommandDelItems.Id = indexs;
+				CommandDelItems.flagQTS = 1;
 				Edit.Text = (string)Subject.SelectedItem;
-			}
+				}
 				if (Flag == 4)
 				{ 
 				ques = ques.Where(x => x.IdSubject == indexs).ToList();
@@ -100,7 +100,7 @@ namespace ExamTicketsAppWPF.CommandWindow
 
 		private void Format_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-				commandView.formatQTS = (string)Format.SelectedItem;
+				CommandDelItems.formatQTS = (string)Format.SelectedItem;
 				if (Flag == 4)
 				{
 				ques = ques.Where(x => x.FormatQuestion == (string)Format.SelectedItem).ToList();
@@ -118,12 +118,12 @@ namespace ExamTicketsAppWPF.CommandWindow
 		{
 				
 				indexc = categ.First(c => c.CategoryName == (string?)Category.SelectedItem).Id;
-				commandView.categoryQTS = (string)Category.SelectedItem;
+				CommandDelItems.categoryQTS = (string)Category.SelectedItem;
 			if (Flag == 0)
 				{
-					commandView.Id = indexc;
-					commandView.flagQTS = 2;
-				    Edit.Text = (string)Category.SelectedItem;
+				CommandDelItems.Id = indexc;
+				CommandDelItems.flagQTS = 2;
+				Edit.Text = (string)Category.SelectedItem;
 			}
 				if (Flag == 4)
 				{
@@ -153,16 +153,18 @@ namespace ExamTicketsAppWPF.CommandWindow
 			
 			if (Flag == 0)
 			{
-				commandView.Id = indexq;
+				CommandDelItems.Id = indexq;
 				Edit.Text = (string)Q.SelectedItem;
-				commandView.flagQTS = 4;
+				CommandDelItems.flagQTS = 4;
 			}
-			commandView.textQTS = (string)Q.SelectedItem;
+			CommandDelItems.textQTS = (string)Q.SelectedItem;
 		}
 
 		private void ButtonSaveQTSC_Click(object sender, RoutedEventArgs e)
 		{
-			commandView.textQTS = Edit.Text;
+			CommandDelItems.textQTS = Edit.Text;
+			Edit.Text = String.Empty;
+
 		}
 
 		private void Edit_TextChanged(object sender, TextChangedEventArgs e)
@@ -175,11 +177,11 @@ namespace ExamTicketsAppWPF.CommandWindow
 			indexp = prac.First(c => c.ContentPractice == (string?)T.SelectedItem).Id;
 			if (Flag == 0)
 			{
-				commandView.Id = indexp;
-				Edit.Text = (string)T.SelectedItem;				
-				commandView.flagQTS = 5;
+				CommandDelItems.Id = indexp;
+				Edit.Text = (string)T.SelectedItem;
+				CommandDelItems.flagQTS = 5;
 			}
-			commandView.textQTS = (string)T.SelectedItem;
+			CommandDelItems.textQTS = (string)T.SelectedItem;
 		}
 	}
 }

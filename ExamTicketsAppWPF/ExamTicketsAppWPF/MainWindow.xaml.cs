@@ -108,5 +108,13 @@ namespace ExamTicketsAppWPF
 		{
 			Close();
 		}
+
+		private void ButtonObn_Click(object sender, RoutedEventArgs e)
+		{
+			MainWindow newWindow = new MainWindow();
+			Application.Current.MainWindow = newWindow;
+			newWindow.Show();
+			this.Close();
+		}
 	}
 }

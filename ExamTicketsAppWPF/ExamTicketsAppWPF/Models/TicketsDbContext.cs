@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using static ExamTicketsAppWPF.ConnectionDb.Connection;
 
 
 namespace ExamTicketsAppWPF.Models

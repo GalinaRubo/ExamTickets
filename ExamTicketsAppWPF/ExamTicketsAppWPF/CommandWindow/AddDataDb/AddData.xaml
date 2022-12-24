@@ -45,7 +45,7 @@
             <Button x:Name="AddC" Content="Добавить категорию" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="AddC_Click" />
         </StackPanel>
         <StackPanel Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="Can" Content="Вернуться" Width="80" Height="30" FontSize="16" Foreground="Red" Click="Can_Click" />
+            <Button x:Name="Can" Content="Отмена" Width="100" Height="30" FontSize="16" Foreground="Red" Click="Can_Click" FontWeight="Bold" />
         </StackPanel>
     </Grid>
 </Window>

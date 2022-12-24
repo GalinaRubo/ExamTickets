@@ -3,21 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ExamTicketsAppWPF.CommandWindow.DelDataDb"
         mc:Ignorable="d"
-        Title="DelData" Height="360" Width="400" Background="Brown">
+        Title="DelData" Height="400" Width="350" Background="Brown">
     <Window.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Control.FontSize" Value="20"></Setter>
+            <Setter Property="Control.FontSize" Value="16"></Setter>
             <Setter Property="Control.FontWeight" Value="Bold"></Setter>
             <Setter Property="Control.Height" Value="40"></Setter>
-            <Setter Property="Control.Width" Value="350"></Setter>
+            <Setter Property="Control.Width" Value="300"></Setter>
             <Setter Property="Control.Background" Value="OrangeRed"></Setter>
             <Setter Property="Control.Foreground" Value="White"></Setter>
         </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -38,6 +38,9 @@
         </StackPanel>
         <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="DelT" Content="Удалить задачу" Style="{StaticResource ButtonStyle}" FontStyle="Italic" Click="DelT_Click" />
+        </StackPanel>
+        <StackPanel Grid.Row="5" VerticalAlignment="Center">
+            <Button  Content="Отмена" FontSize="20" Width="100" Foreground="Red" FontWeight="Bold"  Click="ButtonBack_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:ExamTicketsAppWPF.ViewModels"
-        xmlns:local="clr-namespace:ExamTicketsAppWPF"
         mc:Ignorable="d"
        Title="MainWindow" Height="800" Width="800"  Background="Coral" >
     <Window.DataContext>
@@ -25,11 +24,13 @@
         </Style>
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Control.FontSize" Value="20"></Setter>
-            <Setter Property="Control.Margin" Value="0,50"></Setter>
+            <Setter Property="Control.Margin" Value="0,40"></Setter>
             <Setter Property="Control.Foreground" Value="Gray"></Setter>
             <Setter Property="Control.Background" Value="Beige"></Setter>
             <Setter Property="Control.FontWeight" Value="Bold"></Setter>
             <Setter Property="Control.Width" Value="200"></Setter>
+            <Setter Property="Height" Value="36"></Setter>
+            <Setter Property="Control.VerticalAlignment" Value="Center"></Setter>
         </Style>
     </Window.Resources>
     <Grid>
@@ -51,7 +52,7 @@
                     <ColumnDefinition Width="0.03*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0">
+                <StackPanel Grid.Column="0" Height="679" VerticalAlignment="Top">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -152,7 +153,7 @@
                             </Grid>
                         </StackPanel>
                         <StackPanel Grid.Row="8"  HorizontalAlignment="Center">
-                            <Button x:Name="create" Content="Сформировать" Margin="0,10"  Style="{StaticResource ButtonStyle}" Command="{Binding Madecommand}"  Click="ButtonMade_Click" Height="36" VerticalAlignment="Center" />
+                            <Button x:Name="create" Content="Сформировать" Margin="0,10"  Style="{StaticResource ButtonStyle}" Command="{Binding Createcommand}"  Click="ButtonMade_Click" Height="36" VerticalAlignment="Center" />
                         </StackPanel>
                     </Grid>
                 </StackPanel>
@@ -160,6 +161,7 @@
                 <StackPanel Grid.Column="2">
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -174,16 +176,19 @@
                             </Label>
                         </StackPanel>
                         <StackPanel Grid.Row="1">
-                            <Button Content="Удалить"  Style="{StaticResource ButtonStyle}" Command="{Binding Delcommand}"  Click="ButtonDel_Click" Height="36" VerticalAlignment="Bottom" />
+                            <Button Content="Удалить"  Style="{StaticResource ButtonStyle}" Command="{Binding Delcommand}"  Click="ButtonDel_Click"/>
                         </StackPanel>
                         <StackPanel Grid.Row="2">
-                            <Button Content="Добавить"  Style="{StaticResource ButtonStyle}" Command="{Binding Addcommand}"  Click="ButtonAdd_Click" Height="36" VerticalAlignment="Bottom" />
+                            <Button Content="Добавить"  Style="{StaticResource ButtonStyle}" Command="{Binding Addcommand}"  Click="ButtonAdd_Click"/>
                         </StackPanel>
                         <StackPanel Grid.Row="3">
-                            <Button Content="Редактировать"   Style="{StaticResource ButtonStyle}" Command="{Binding Editcommand}"  Click="ButtonEdit_Click" Height="36" VerticalAlignment="Bottom" />
+                            <Button Content="Редактировать"   Style="{StaticResource ButtonStyle}" Command="{Binding Editcommand}"  Click="ButtonEdit_Click"/>
                         </StackPanel>
                         <StackPanel Grid.Row="4">
-                            <Button Content="Выйти"   Style="{StaticResource ButtonStyle}"   Click="ButtonExit_Click" Height="36" VerticalAlignment="Bottom" />
+                            <Button Content="Обновить"   Style="{StaticResource ButtonStyle}"   Click="ButtonObn_Click"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5">
+                            <Button Content="Выйти"   Style="{StaticResource ButtonStyle}"   Click="ButtonExit_Click"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>

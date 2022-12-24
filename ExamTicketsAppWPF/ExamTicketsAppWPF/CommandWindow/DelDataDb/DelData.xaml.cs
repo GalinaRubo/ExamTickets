@@ -51,6 +51,9 @@ namespace ExamTicketsAppWPF.CommandWindow.DelDataDb
 			Close();
 		}
 
-
+		private void ButtonBack_Click(object sender, RoutedEventArgs e)
+		{
+			Close();
+		}
 	}
 }

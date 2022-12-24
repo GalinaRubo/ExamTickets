@@ -24,7 +24,7 @@ namespace ExamTicketsAppWPF.ViewModels
 				_subject = subj.ConvertAll(x => x.ToString());
 				var categ = db.categories.FromSqlRaw("SELECT * FROM Categories").Select(c => c.CategoryName).ToList();
 				_category = categ.ConvertAll(y => y.ToString());
-				_format = new List<string>() { "TXT", "PNG", "JPG" };
+				_format = new List<string>() { "TXT", "FILE"};
 			}
 		}
 	}

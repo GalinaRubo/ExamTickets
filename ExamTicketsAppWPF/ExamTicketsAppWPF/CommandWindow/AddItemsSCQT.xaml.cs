@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using ExamTicketsAppWPF.ViewModels;
+using ExamTicketsAppWPF.ViewModels.Commands;
 
 namespace ExamTicketsAppWPF.CommandWindow
 {
@@ -10,14 +11,13 @@ namespace ExamTicketsAppWPF.CommandWindow
 	public partial class ItemQuestionWindow : Window
 	{
 		readonly MWViewModel mWViwModel = new MWViewModel();
-		CommandViewModel commandView  = new CommandViewModel();	
-		
+		CommandAddItems commandAddItems = new CommandAddItems();
+
 		public  ItemQuestionWindow(int flag)
 		{
 			InitializeComponent();
-			
-			DataContext = commandView;
-			commandView.flagQTS = flag;
+			DataContext = commandAddItems;
+			CommandAddItems.flagQTS = flag;
 			if (flag < 5)
 			{
 				Format.ItemsSource = mWViwModel._format;
@@ -29,17 +29,17 @@ namespace ExamTicketsAppWPF.CommandWindow
 		private void Subject_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
-			commandView.subjectQTS = (string)Subject.SelectedItem;
+			CommandAddItems.subjectQTS = (string)Subject.SelectedItem;
 		}
 
 		private void Question_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			commandView.textQTS = (string)Question.Text;
+			CommandAddItems.textQTS = (string)Question.Text;
 		}
 
 		private void Format_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			commandView.formatQTS = (string)Format.SelectedItem;
+			CommandAddItems.formatQTS = (string)Format.SelectedItem;
 		}
 
 		private void ButtonAddQTS_Click(object sender, RoutedEventArgs e)
@@ -49,7 +49,7 @@ namespace ExamTicketsAppWPF.CommandWindow
 
 		private void category_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			commandView.categoryQTS = (string)category.SelectedItem;
+			CommandAddItems.categoryQTS = (string)category.SelectedItem;
 		}
 
 		private void ButtonBack_Click(object sender, RoutedEventArgs e)

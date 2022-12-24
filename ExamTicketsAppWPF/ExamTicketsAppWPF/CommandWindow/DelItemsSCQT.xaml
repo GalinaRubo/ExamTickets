@@ -2,13 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                xmlns:vm="clr-namespace:ExamTicketsAppWPF.ViewModels"
+                xmlns:vm="clr-namespace:ExamTicketsAppWPF.ViewModels.Commands"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamTicketsAppWPF.CommandWindow"
         mc:Ignorable="d"
         Title="DelItemsSCQT" Height="700" Width="600" Background="Brown">
     <Window.DataContext>
-        <vm:CommandViewModel></vm:CommandViewModel>
+        <vm:CommandDelItems></vm:CommandDelItems>
     </Window.DataContext>
     <Window.Resources>
         <Style x:Key="labelStyle">
@@ -39,20 +39,20 @@
             <Label Content="Предмет" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <ComboBox x:Name="Subject"  Text="-Выберите предмет-" HorizontalContentAlignment="Center"  FontSize="25"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  SelectionChanged="Subject_SelectionChanged" FontWeight="Normal" Width="350" Height="50" VerticalAlignment="Center" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="Subject"  Text="Выберите предмет" HorizontalContentAlignment="Center"  FontSize="20"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  SelectionChanged="Subject_SelectionChanged" FontWeight="Normal" Width="350" Height="50" VerticalAlignment="Center" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Формат" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="3" VerticalAlignment="Center">
-            <ComboBox x:Name="Format" Text="-Выберите формат-" HorizontalContentAlignment="Center"  FontSize="20"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"   SelectionChanged="Format_SelectionChanged" FontWeight="Normal" Width="240" Height="36" VerticalAlignment="Center" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="Format" Text="Выберите формат" HorizontalContentAlignment="Center"  FontSize="20"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"   SelectionChanged="Format_SelectionChanged" FontWeight="Normal" Width="240" Height="36" VerticalAlignment="Center" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
 
         </StackPanel>
         <StackPanel Grid.Row="4">
             <Label Content="Категория" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="5" VerticalAlignment="Center">
-            <ComboBox x:Name="Category" Text="-Выберите категорию-" HorizontalContentAlignment="Center"  FontSize="25"   IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  SelectionChanged="Category_SelectionChanged" FontWeight="Normal" Width="350" Height="50" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="Category" Text="Выберите категорию" HorizontalContentAlignment="Center"  FontSize="20"   IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  SelectionChanged="Category_SelectionChanged" FontWeight="Normal" Width="350" Height="50" FontStyle="Italic" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
         </StackPanel>
         <StackPanel Grid.Row="6" >
             <Label  Style="{StaticResource labelStyle}">
@@ -108,13 +108,13 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0">
-                    <Button x:Name="Save" Content="Сохранить" FontSize="25" Width="150" Foreground="OrangeRed" FontWeight="Bold" Command="{Binding SaveQTScommand}" Click="ButtonSaveQTSC_Click"/>
+                    <Button x:Name="Save" Content="Изменить" FontSize="25" Width="150" Foreground="OrangeRed" FontWeight="Bold" Command="{Binding EditQTScommand}" Click="ButtonSaveQTSC_Click"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <Button x:Name="Del"  Content="Удалить" FontSize="25" Width="150" Foreground="OrangeRed" FontWeight="Bold" Command="{Binding DelQTScommand}" Click="ButtonDelQTSC_Click"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2">
-                    <Button  Content="Вернуться" FontSize="25" Width="150" Foreground="OrangeRed" FontWeight="Bold"  Click="ButtonCancalQTSC_Click"/>
+                    <Button  Content="Отмена" FontSize="25" Width="150" Foreground="OrangeRed" FontWeight="Bold"  Click="ButtonCancalQTSC_Click"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
