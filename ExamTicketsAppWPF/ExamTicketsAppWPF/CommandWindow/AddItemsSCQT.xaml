@@ -34,19 +34,19 @@
             <Label Content="Предмет" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <ComboBox x:Name="Subject"  FontSize="25" Width="300"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите предмет"  SelectionChanged="Subject_SelectionChanged" FontWeight="Normal" VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="Subject"  FontSize="25" Width="300"  IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  Text="Выберите предмет"  SelectionChanged="Subject_SelectionChanged" FontWeight="Normal" VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
         </StackPanel>
         <StackPanel Grid.Row="2">
             <Label Content="Формат" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="3" VerticalAlignment="Center">
-            <ComboBox x:Name="Format"  FontSize="20" Width="200" IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите формат"  SelectionChanged="Format_SelectionChanged" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="Format"  FontSize="20" Width="200" IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True"  Text="Выберите формат"  SelectionChanged="Format_SelectionChanged" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
         </StackPanel>
         <StackPanel Grid.Row="4">
             <Label Content="Категория" Style="{StaticResource labelStyle}"/>
         </StackPanel>
         <StackPanel Grid.Row="5" VerticalAlignment="Center">
-            <ComboBox x:Name="category"  FontSize="25" Width="300" IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите категорию"  SelectionChanged="category_SelectionChanged" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            <ComboBox x:Name="category"  FontSize="25" Width="300" IsEditable="true" StaysOpenOnEdit="True" IsTextSearchEnabled="True" Text="Выберите категорию"  SelectionChanged="category_SelectionChanged" IsReadOnly="true" FontWeight="Normal"  VerticalAlignment="Center" FontStyle="Italic" BorderBrush="#FFBDA5A5" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
         </StackPanel>
         <StackPanel Grid.Row="6">
             <Label  Style="{StaticResource labelStyle}">
@@ -56,11 +56,12 @@
             </Label>
         </StackPanel>
         <StackPanel  Grid.Row="7">
-            <TextBox x:Name="Question" TextAlignment="Center" VerticalAlignment="Center" Margin="0,20" FontSize="24"  Width="500" Height="120" TextChanged="Question_TextChanged" FontFamily="Lucida Sans" ></TextBox>
+            <TextBox x:Name="Question" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,20" FontSize="24"  Width="500" Height="120" TextChanged="Question_TextChanged" FontFamily="Lucida Sans" ></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="8">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -69,6 +70,9 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <Button  Content="Отмена" FontSize="25" Width="150" Foreground="Red" FontWeight="Bold"  Click="ButtonBack_Click"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <Button  Content="Очистить" FontSize="25" Width="150" Foreground="Red" FontWeight="Bold"  Click="ButtonClean_Click"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

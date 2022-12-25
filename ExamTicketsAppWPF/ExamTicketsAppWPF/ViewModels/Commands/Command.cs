@@ -23,12 +23,13 @@ namespace ExamTicketsAppWPF.ViewModels.Commands
 
 		public bool CanExecute(object? parameter)
 		{
-			return canExecute == null || canExecute(parameter);
+			return true;
 		}
 
 		public void Execute(object? parameter)
 		{
-			execute(parameter);
+		
+			this.execute(parameter);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using ExamTicketsAppWPF.ViewModels;
 using ExamTicketsAppWPF.ViewModels.Commands;
 
@@ -44,7 +45,7 @@ namespace ExamTicketsAppWPF.CommandWindow
 
 		private void ButtonAddQTS_Click(object sender, RoutedEventArgs e)
 		{
-			Close();
+		
 		}
 
 		private void category_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,7 +55,15 @@ namespace ExamTicketsAppWPF.CommandWindow
 
 		private void ButtonBack_Click(object sender, RoutedEventArgs e)
 		{
-			Close();
+			AddInfoWindow newWindow = new AddInfoWindow();
+			Application.Current.MainWindow = newWindow;
+			newWindow.Show();
+			this.Close();
+		}
+
+		private void ButtonClean_Click(object sender, RoutedEventArgs e)
+		{
+			Question.Text = "";			
 		}
 	}
 }

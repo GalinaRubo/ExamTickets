@@ -27,6 +27,22 @@ namespace ExamTicketsAppWPF.ViewModels.Commands
 
 					if (flagQTS < 5)
 					{
+						if (formatQTS == null)
+						{
+							MessageBox.Show("Введите формат");
+							return;
+						}
+						if (subjectQTS == null)
+						{
+							MessageBox.Show("Введите предмет");
+							return;
+						}
+						if (categoryQTS == null)
+						{
+							MessageBox.Show("Введите категорию");
+							return;
+						}
+
 						indexc = (db.categories.First(c => c.CategoryName == categoryQTS)).Id;
 						indexs = (db.subjects.First(s => s.SubjectName == subjectQTS)).Id;
 					}
@@ -121,8 +137,7 @@ namespace ExamTicketsAppWPF.ViewModels.Commands
 							MessageBox.Show("Задание не выбрано");
 							break;
 					}
-				});
-
+				});				
 			}
 		}
 	}

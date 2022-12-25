@@ -2,6 +2,7 @@
 using ExamTicketsAppWPF.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,8 +22,11 @@ namespace ExamTicketsAppWPF.ViewModels
 
 		public string? Sb { get; set; }
 		public string? Cb { get; set; }
+
+		string path = @"E:\SQL\ExamTickets.docx";
 		public Command Createcommand
 		{
+
 			get
 			{
 				return createCommand = new Command((o) =>
@@ -38,7 +42,7 @@ namespace ExamTicketsAppWPF.ViewModels
 							var prac = db.practices.Where(a => a.idsubject == indexs && a.idcategory == indexc).ToList();
 							int kb = 1;
 							int kbr = 0;
-							string path = @"E:\SQL\ExamTickets.docx";
+
 							var doc = Xceed.Words.NET.DocX.Create(path);
 							if (quest.Count == 0) MessageBox.Show("Вопросов с таким предметом и категорией в базе данных нет");
 							else
@@ -47,7 +51,7 @@ namespace ExamTicketsAppWPF.ViewModels
 								if (kbr < 0)
 								{
 									Kb = (quest.Count / Convert.ToInt32(Kq)).ToString();
-									Console.Write("Количество билетов может быть только " + Kb + "\n");
+									MessageBox.Show("Количество билетов может быть только " + Kb + "\n");
 								}
 							};
 							if (prac.Count == 0) MessageBox.Show("Задач с таким предметом и категорией в базе данных нет");
@@ -57,7 +61,7 @@ namespace ExamTicketsAppWPF.ViewModels
 								if (kbr < 0)
 								{
 									Kb = (prac.Count / Convert.ToInt32(Kt)).ToString();
-									Console.Write("Количество билетов может быть только " + Kb + "\n");
+									MessageBox.Show("Количество билетов может быть только " + Kb + "\n");
 								}
 							};
 
@@ -136,11 +140,14 @@ namespace ExamTicketsAppWPF.ViewModels
 								doc.InsertParagraph($"--------------------------------------------------------------------------------------------------------------------------------\f");
 								kb++;
 							}
-
-							doc.Save();
-						}
-						if (Kb != "0")
-							MessageBox.Show("Билеты сформированы");
+							if (prac.Count == 0 && quest.Count == 0)
+								MessageBox.Show("Файл с билетами пуст");
+							else
+							{
+								doc.Save();
+								MessageBox.Show("Билеты сформированы");
+							}
+						}				
 						return;
 					}
 					if (Sb == null) MessageBox.Show("Введите предмет билетов");

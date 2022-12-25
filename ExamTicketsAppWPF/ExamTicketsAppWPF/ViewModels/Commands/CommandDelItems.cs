@@ -60,7 +60,7 @@ namespace ExamTicketsAppWPF.ViewModels.Commands
 							foreach (var p in db.practices)
 								if (p.idsubject == index_s && p.idcategory == index_c) db.practices.Remove(p);
 							db.SaveChanges();
-							MessageBox.Show("Вопросы и задачи выбранных предмета + категори удалены");
+//							MessageBox.Show("Вопросы и задачи выбранных предмета + категори удалены");
 							break;
 						case 4:
 							db.questions.Remove(db.questions.First(c => c.ContentQuestion == textQTS));
